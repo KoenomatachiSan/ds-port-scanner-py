@@ -39,24 +39,27 @@ listbox.place(x=400,y=5)
 
 def success_menu_render():
     listbox.delete(0, 5)
-    now = datetime.now()
-    hora_data = now.strftime("%d/%m/%Y %H:%M:%S")
     host = input_host.get()
-    listbox.insert(1, str("[")+str(hora_data)+str("] Escaneando host => ")+str(host)) 
-
-    now = datetime.now()
-    hora_data = now.strftime("%d/%m/%Y %H:%M:%S")
     port_start = input_start_port.get()
-    listbox.insert(2, str("[")+str(hora_data)+str("] Porta inicial => ")+str(port_start)) 
-
-    now = datetime.now()
-    hora_data = now.strftime("%d/%m/%Y %H:%M:%S")
     port_end = input_final_port.get()
-    listbox.insert(3, str("[")+str(hora_data)+str("] Porta final => ")+str(port_end)) 
+
+    if (host == "" or port_start == "" or port_end == ""):
+        now = datetime.now()
+        hora_data = now.strftime("%d/%m/%Y %H:%M:%S")
+        listbox.insert(1, str("[")+str(hora_data)+str("] Digite todos os campos! "))
+    else:
+        now = datetime.now()
+        listbox.insert(1, str("[")+str(hora_data)+str("] Escaneando host => ")+str(host)) 
+
+        now = datetime.now()
+        listbox.insert(2, str("[")+str(hora_data)+str("] Porta inicial => ")+str(port_start)) 
+
+        now = datetime.now()
+        listbox.insert(3, str("[")+str(hora_data)+str("] Porta final => ")+str(port_end)) 
 
 
-    listbox.insert(4, ("----------------------------------------------------------------")) 
-    listbox.insert(5, str("[")+str(hora_data)+str("] Portas abertas => ")+str(dudesec.portScanner(host,port_start,port_end)))
+        listbox.insert(4, ("----------------------------------------------------------------")) 
+        listbox.insert(5, str("[")+str(hora_data)+str("] Portas abertas => ")+str(dudesec.portScanner(host,port_start,port_end)))
     
 
 tk.Button(root, text='Salvar Resultado',width=17,bg='green',fg='white',command=success_menu_render).place(x=400,y=140)

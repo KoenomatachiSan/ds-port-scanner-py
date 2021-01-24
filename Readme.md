@@ -1,4 +1,4 @@
-# DudeProject - Template + Documentation
+# DS - Port Scanner UI GUI
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://dudesecurity.darwinproject.online/)
 
